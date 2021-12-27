@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Technical Test</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body style="height: 100vh">
+    <div
+      class="container d-flex align-items-center justify-content-center"
+      style="height: 100%"
+    >
+      <div class="card mb-3">
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="https://picsum.photos/600/600"
+              class="img-fluid rounded-start"
+              alt="Image Login"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <div class="d-flex flex-column justify-content-center w-100 mt-5">
+                <h3 class="card-title text-center">Login</h3>
+                <form class="my-4" action="/login" method="post">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Pablo Escobar"
+                      required
+                    />
+                    <label for="name">Nombre Usuario</label>
+                  </div>
+                  <div class="form-floating">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="pwd"
+                      name="pwd"
+                      placeholder="Password"
+                      required
+                    />
+                    <label for="pwd">Password</label>
+                  </div>
+
+                  <div class="d-flex justify-content-center mt-5">
+                    <button
+                      type="submit"
+                      class="btn btn-outline-success text-center w-100"
+                      ,
+                      id="loginBtn"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script>
+      function getCookie(name) {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1) {
+          begin = dc.indexOf(prefix);
+          if (begin != 0) return null;
+        } else {
+          begin += 2;
+          var end = document.cookie.indexOf(";", begin);
+          if (end == -1) {
+            end = dc.length;
+          }
+        }
+        // because unescape has been deprecated, replaced with decodeURI
+        //return unescape(dc.substring(begin + prefix.length, end));
+        return decodeURI(dc.substring(begin + prefix.length, end));
+      }
+
+      var cookie = getCookie("token");
+
+      if (cookie != null) {
+        window.location.replace('/interno');
+      }
+    </script>
+  </body>
+</html>
